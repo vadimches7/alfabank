@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Альфа-Банк × Франшизы: Партнерская программа</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Слайд 1 - Титульный */
+        .slide-1 {
+            background: linear-gradient(135deg, #ef3124 0%, #ff6b6b 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .slide-1::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+        
+        .logo {
+            width: 200px;
+            height: 60px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+            color: #ef3124;
+            font-size: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight-box {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            padding: 30px 50px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight-box h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        /* Слайд 2 - Проблема */
+        .slide-2 {
+            background: #f8f9fa;
+        }
+        
+        .problem-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .problem-header h2 {
+            font-size: 48px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        .problem-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: #ffebeb;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .problem-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        
+        .problem-card p {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        /* Слайд 3 - Решение */
+        .slide-3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .solution-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .solution-content h2 {
+            font-size: 48px;
+            margin-bottom: 50px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .benefit-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-10px);
+        }
+        
+        .benefit-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .benefit-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-card p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Слайд 4 - Для УК */
+        .slide-4 {
+            background: #f8f9fa;
+        }
+        
+        .uk-benefits {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .uk-benefits h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+        }
+        
+        .income-calculator {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .calc-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .calc-item h4 {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .calc-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ef3124;
+        }
+        
+        .total-income {
+            background: linear-gradient(135deg, #ef3124, #ff6b6b);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .total-income h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .total-income .amount {
+            font-size: 48px;
+            font-weight: 800;
+        }
+        
+        /* Слайд 5 - Продукты */
+        .slide-5 {
+            background: white;
+        }
+        
+        .products-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .products-header h2 {
+            font-size: 48px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .product-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ef3124, #ff6b6b);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .product-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ef3124, #ff6b6b);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 35px;
+            margin-bottom: 25px;
+        }
+        
+        .product-card h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        
+        .product-features {
+            list-style: none;
+        }
+        
+        .product-features li {
+            padding: 12px 0;
+            color: #666;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-features li:before {
+            content: '✓';
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .special-offer {
+            background: #fff3cd;
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        /* Слайд 6 - Кейсы */
+        .slide-6 {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .cases-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .cases-content h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+        }
+        
+        .case-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .case-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .case-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ef3124;
+            margin-bottom: 20px;
+        }
+        
+        .case-stat {
+            margin: 15px 0;
+        }
+        
+        .case-stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #4caf50;
+        }
+        
+        .case-stat-label {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        /* Слайд 7 - CTA */
+        .slide-7 {
+            background: linear-gradient(135deg, #ef3124 0%, #ff6b6b 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+        }
+        
+        .cta-content h2 {
+            font-size: 56px;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+        
+        .cta-content p {
+            font-size: 24px;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+        
+        .cta-steps {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: #ef3124;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .contact-box {
+            background: white;
+            color: #1a1a1a;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .contact-box h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #ef3124;
+        }
+        
+        .contact-info {
+            font-size: 20px;
+            margin: 15px 0;
+        }
+        
+        .contact-info a {
+            color: #ef3124;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .bonus-badge {
+            background: #ffd700;
+            color: #1a1a1a;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Слайд 1: Титульный -->
+    <div class="slide slide-1">
+        <div class="logo">АЛЬФА-БАНК</div>
+        <h1>Партнерская программа<br>для франшиз</h1>
+        <p class="subtitle">Увеличьте доход УК на 1,5-5 млн ₽ в год без вложений</p>
+        <div class="highlight-box">
+            <h2>20% от всех комиссий банка</h2>
+            <p>Пожизненно с каждого подключенного франчайзи</p>
+        </div>
+    </div>
+
+    <!-- Слайд 2: Проблемы франчайзи -->
+    <div class="slide slide-2">
+        <div class="problem-header">
+            <h2>Что мешает франчайзи расти?</h2>
+            <p style="font-size: 20px; color: #666;">По исследованию 2024 года среди 500+ франчайзи</p>
+        </div>
+        <div class="problems-grid">
+            <div class="problem-card">
+                <div class="problem-icon">💸</div>
+                <h3>Высокие банковские комиссии</h3>
+                <p>До 40% чистой прибыли уходит на РКО, эквайринг и переводы</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🚫</div>
+                <h3>Сложности с кредитованием</h3>
+                <p>87% не могут получить кредит в первый год работы</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">⏱️</div>
+                <h3>Долгий запуск</h3>
+                <p>До 3 месяцев на открытие счета и подключение эквайринга</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">📊</div>
+                <h3>Нет финансовой поддержки</h3>
+                <p>Банки не понимают специфику франчайзингового бизнеса</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Слайд 3: Решение -->
+    <div class="slide slide-3">
+        <div class="solution-content">
+            <h2>Специальное решение Альфа-Банка</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">5 минут</div>
+                    <h3>Открытие счета</h3>
+                    <p>От заявки до первого платежа</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">0 ₽</div>
+                    <h3>Обслуживание РКО</h3>
+                    <p>Первые 3 месяца бесплатно</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">0,4%</div>
+                    <h3>Эквайринг</h3>
+                    <p>Лучшие ставки на рынке</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">1 день</div>
+                    <h3>Кредит с первого дня</h3>
+                    <p>До 30 млн ₽ для новых ИП</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">24/7</div>
+                    <h3>Персональный менеджер</h3>
+                    <p>Решение любых вопросов</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">-40%</div>
+                    <h3>Экономия на комиссиях</h3>
+                    <p>По сравнению с другими банками</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Слайд 4: Выгода для УК -->
+    <div class="slide slide-4">
+        <div class="uk-benefits">
+            <h2>Ваш новый источник дохода</h2>
+            <div class="income-calculator">
+                <h3 style="text-align: center; margin-bottom: 40px; font-size: 32px;">Калькулятор дохода УК</h3>
+                <div class="calculator-grid">
+                    <div class="calc-item">
+                        <h4>Количество франчайзи</h4>
+                        <div class="calc-value">100</div>
+                    </div>
+                    <div class="calc-item">
+                        <h4>Средний доход с точки</h4>
+                        <div class="calc-value">25 000 ₽</div>
+                    </div>
+                    <div class="calc-item">
+                        <h4>В год с точки</h4>
+                        <div class="calc-value">300 000 ₽</div>
+                    </div>
+                </div>
+                <div class="total-income">
+                    <h3>Ваш годовой доход</h3>
+                    <div class="amount">3 000 000 ₽</div>
+                    <p style="margin-top: 10px;">Без вложений и операционных расходов</p>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
+                <div style="background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <h4 style="color: #666; margin-bottom: 10px;">Срок выплат</h4>
+                    <p style="font-size: 24px; font-weight: bold; color: #1a1a1a;">Пожизненно</p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <h4 style="color: #666; margin-bottom: 10px;">Процент отчислений</h4>
+                    <p style="font-size: 24px; font-weight: bold; color: #1a1a1a;">20% гарантированно</p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <h4 style="color: #666; margin-bottom: 10px;">Ваши вложения</h4>
+                    <p style="font-size: 24px; font-weight: bold; color: #1a1a1a;">0 ₽</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Слайд 5: Продукты для франчайзи -->
+    <div class="slide slide-5">
+        <div class="products-header">
+            <h2>Полный пакет для франчайзи</h2>
+            <p style="font-size: 20px; color: #666;">Все необходимое для успешного старта и масштабирования</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon">💳</div>
+                <h3>Расчетный счет</h3>
+                <ul class="product-features">
+                    <li>Открытие за 5 минут онлайн</li>
+                    <li>Бесплатное обслуживание 3 месяца</li>
+                    <li>Переводы ФЛ до 3 млн ₽ бесплатно</li>
+                    <li>Зарплатный проект 0 ₽</li>
+                </ul>
+                <div class="special-offer">🎁 Бонус: 3% годовых на остаток</div>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🏪</div>
+                <h3>Эквайринг</h3>
+                <ul class="product-features">
+                    <li>Торговый эквайринг от 1%</li>
+                    <li>QR-платежи СБП от 0,4%</li>
+                    <li>Интернет-эквайринг от 1%</li>
+                    <li>Моментальное зачисление +0,2%</li>
+                </ul>
+                <div class="special-offer">🚀 Подключение за 3 дня</div>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">💰</div>
+                <h3>Кредитование</h3>
+                <ul class="product-features">
+                    <li>Кредит с первого дня до 1 млн ₽</li>
+                    <li>Бизнес-кредит до 30 млн ₽</li>
+                    <li>Кредитная карта до 1 млн ₽</li>
+                    <li>60 дней без процентов</li>
+                </ul>
+                <div class="special-offer">⚡ Одобрение за 5 минут</div>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🛡️</div>
+                <h3>Дополнительные сервисы</h3>
+                <ul class="product-features">
+                    <li>Онлайн-бухгалтерия</li>
+                    <li>Юридические консультации</li>
+                    <li>Проверка контрагентов</li>
+                    <li>Геоаналитика для выбора точки</li>
+                </ul>
+                <div class="special-offer">💎 Эксклюзив для партнеров</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Слайд 6: Кейсы -->
+    <div class="slide slide-6">
+        <div class="cases-content">
+            <h2>Результаты наших партнеров</h2>
+            <div class="case-cards">
+                <div class="case-card">
+                    <div class="case-logo">Сеть кофеен "КофеБро"</div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">150</div>
+                        <div class="case-stat-label">франчайзи подключено</div>
+                    </div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">2,8 млн ₽</div>
+                        <div class="case-stat-label">доход УК за год</div>
+                    </div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">-35%</div>
+                        <div class="case-stat-label">экономия франчайзи</div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-logo">Фитнес "ПроСпорт"</div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">87</div>
+                        <div class="case-stat-label">франчайзи подключено</div>
+                    </div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">1,9 млн ₽</div>
+                        <div class="case-stat-label">доход УК за год</div>
+                    </div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">+45%</div>
+                        <div class="case-stat-label">рост продаж франшиз</div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-logo">Салоны "Красота+"</div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">230</div>
+                        <div class="case-stat-label">франчайзи подключено</div>
+                    </div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">4,1 млн ₽</div>
+                        <div class="case-stat-label">доход УК за год</div>
+                    </div>
+                    <div class="case-stat">
+                        <div class="case-stat-value">95%</div>
+                        <div class="case-stat-label">удержание франчайзи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Слайд 7: CTA -->
+    <div class="slide slide-7">
+        <div class="cta-content">
+            <h2>Начните зарабатывать уже через 2 недели</h2>
+            <p>Простой старт партнерства за 3 шага</p>
+            <div class="cta-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <span>Подписание партнерского соглашения (1 день)</span>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <span>Информирование франчайзи о спецусловиях (3-5 дней)</span>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <span>Получение первых выплат (с 14 дня)</span>
+                </div>
+            </div>
+            <div class="contact-box">
+                <h3>Свяжитесь с нами прямо сейчас</h3>
+                <div class="contact-info">
+                    <strong>Лана Погосян</strong><br>
+                    Руководитель партнерских программ
+                </div>
+                <div class="contact-info">
+                    📱 <a href="tel:+79169138700">+7 (916) 913-87-00</a>
+                </div>
+                <div class="contact-info">
+                    ✉️ <a href="mailto:LGPogosyan@alfabank.ru">LGPogosyan@alfabank.ru</a>
+                </div>
+                <div class="bonus-badge">🎁 Первым 10 партнерам — ставка 25%</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
